@@ -3,20 +3,24 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public float moveSpeed;
-    public float moveDistance;
-    private Rigidbody2D rigidbody;
-    private Vector3 currentPosition;
+
+    private Vector3 positionToMoveTo;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentPosition = transform.position;
+        positionToMoveTo = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, positionToMoveTo, moveSpeed * Time.deltaTime);
+    }
+
+    public void Push(float force)
+    {
+        positionToMoveTo += Vector3.right * force;
     }
 }

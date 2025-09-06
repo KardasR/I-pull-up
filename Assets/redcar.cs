@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class NoteTest : MonoBehaviour
+public class redcar : MonoBehaviour
 {
-    public float speed;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +11,6 @@ public class NoteTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        
     }
 }

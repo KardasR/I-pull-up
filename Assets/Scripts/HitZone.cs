@@ -6,9 +6,9 @@ public class HitZone : MonoBehaviour
     public float perfectPush;
     public float greatPush;
     public float goodPush;
-    public float missPush;
 
     public CarController player;
+    public NeedleController needle;
     private List<GameObject> tireList = new List<GameObject>();
 
     //
@@ -24,22 +24,19 @@ public class HitZone : MonoBehaviour
                 {
                     Debug.Log("Perfect!");
                     player.Push(perfectPush);
+                    needle.MoveTheNeedle(true);
                 }
                 else if (xdistance < 0.3f)
                 {
                     Debug.Log("Great!");
                     player.Push(greatPush);
+                    needle.MoveTheNeedle(true);
                 }
                 else if (xdistance < 0.5f)
                 {
                     Debug.Log("Good!");
                     player.Push(goodPush);
-                }
-                else
-                {
-                    Debug.Log("Miss...");
-                    player.Push(missPush);
-                    return;
+                    needle.MoveTheNeedle(true);
                 }
 
                 tireList?.RemoveAt(0);
@@ -53,6 +50,7 @@ public class HitZone : MonoBehaviour
         if (collision.CompareTag("Tire"))
         {
             tireList.Remove(collision.gameObject);
+            
             // tire will be disposed later.
         }
     }

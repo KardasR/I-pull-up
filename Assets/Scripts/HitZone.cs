@@ -50,8 +50,6 @@ public class HitZone : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("trigger exit");
-
         if (collision.CompareTag("Tire"))
         {
             tireList.Remove(collision.gameObject);
@@ -65,44 +63,9 @@ public class HitZone : MonoBehaviour
     /// <param name="other"></param>
     void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("trigger event");
-
         if (collision.CompareTag("Tire") && !tireList.Contains(collision.gameObject))
         {
             tireList.Add(collision.gameObject);
         }
-
-        // if (collision.CompareTag("Tire"))
-        // {
-        //     Debug.Log("tire trigger");
-        //     if (Input.GetKeyDown(KeyCode.Space))
-        //     {
-        //         float xdistance = collision.transform.position.x - transform.position.x;
-
-            //         if (xdistance < 0.1f)
-            //         {
-            //             Debug.Log("Perfect!");
-            //             player.Push(10f);
-            //         }
-            //         else if (xdistance < 0.3f)
-            //         {
-            //             Debug.Log("Great!");
-            //             player.Push(5f);
-            //         }
-            //         else if (xdistance < 0.5f)
-            //         {
-            //             Debug.Log("Good!");
-            //             player.Push(1f);
-            //         }
-            //         else
-            //         {
-            //             Debug.Log("Miss...");
-            //             player.Push(-1f);
-            //             return;
-            //         }
-
-            //         Destroy(collision.gameObject);
-            //     }
-            // }
     }
 }
